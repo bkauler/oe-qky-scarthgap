@@ -1,0 +1,5 @@
+20240105
+this was in kirkstone, meta-oe/recipes-gnome/vte9/vte9_0.28.2.bb
+no longer in scarthgap
+note, scarthgap only has meta/recipes-support/vte/vte_0.74.1.bb
+

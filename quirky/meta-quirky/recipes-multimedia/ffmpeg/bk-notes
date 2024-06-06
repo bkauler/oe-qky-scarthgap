@@ -1,0 +1,10 @@
+
+20221203
+kirkstone has ffmpeg 5.0.1, however, vlc compile file.
+rolled back to ffmpeg 4.4 from honister
+
+20240101
+scarthgap, ffmpeg 6.1
+meta-multimedia/recipes-multimedia/vlc
+also my meta-quirky/ " /vlc_%.bbappend
+...will it compile?

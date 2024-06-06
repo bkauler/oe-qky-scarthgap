@@ -1,0 +1,7 @@
+
+20240106 scarthgap
+guvcview 2.0.7-2
+undefined reference to `avcodec_get_context_defaults3'
+...this was deprecated in ffmpeg, now gone.
+2.0.8 fixed.
+

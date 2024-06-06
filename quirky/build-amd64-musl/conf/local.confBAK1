@@ -1,0 +1,104 @@
+
+USER_CLASSES ?= "buildstats"
+
+PATCHRESOLVE = "noop"
+
+BB_DISKMON_DIRS ??= "\
+    STOPTASKS,${TMPDIR},1G,100K \
+    STOPTASKS,${DL_DIR},1G,100K \
+    STOPTASKS,${SSTATE_DIR},1G,100K \
+    STOPTASKS,/tmp,100M,100K \
+    HALT,${TMPDIR},100M,1K \
+    HALT,${DL_DIR},100M,1K \
+    HALT,${SSTATE_DIR},100M,1K \
+    HALT,/tmp,10M,1K"
+
+PACKAGECONFIG:append:pn-qemu-native = " sdl"
+PACKAGECONFIG:append:pn-nativesdk-qemu = " sdl"
+
+CONF_VERSION = "2"
+
+MACHINE ??= "genericx86-64"
+DISTRO ?= "poky"
+EXTRA_IMAGE_FEATURES ?= ""
+
+PACKAGE_CLASSES ?= "package_deb"
+
+INITRAMFS_MAXSIZE = "163840"
+
+DISTRO_FEATURES:remove = "systemd"
+DISTRO_FEATURES_BACKFILL_CONSIDERED += "systemd"
+
+DISTRO_FEATURES:remove = "ptest"
+DISTRO_FEATURES:remove = "vulkan"
+DISTRO_FEATURES:remove = "pcmcia"
+DISTRO_FEATURES:remove = "multiarch"
+
+LICENSE_FLAGS_ACCEPTED += "commercial"
+
+#20230903 add usrmerge
+DISTRO_FEATURES:append = " opengl ldconfig usrmerge"
+PACKAGE_CLASSES ?= "package_deb"
+
+DISTRO_FEATURES:remove = "zeroconf"
+DISTRO_FEATURES:remove = "wayland"
+
+WARN_QA:remove = "patch-fuzz"
+WARN_QA:remove = "host-user-contaminated"
+ERROR_QA:remove = "installed-vs-shipped"
+ERROR_QA:remove = "unknown-configure-option"
+ERROR_QA:remove = "already-stripped"
+ERROR_QA:remove = "ldflags"
+#20230910 get this src from github tags...
+WARN_QA:remove = "src-uri-bad"
+
+TCLIBC = "musl"
+
+IMAGE_INSTALL:append = " libcap-static e2fsprogs-static"
+IMAGE_INSTALL:append = " gnupg1-static"
+IMAGE_INSTALL:append = " coreutils-static busybox-static binutils-static"
+#note, ncurses-static needed by mped-static...
+IMAGE_INSTALL:append = " ncurses-static busybox-initramfs-static \
+    mped-static pup-tools-c-static hdparm-static util-linux-static \
+    squashfs-tools-static idump-static"
+
+#replacement for e4crypt (in e2fsprogs-static)
+IMAGE_INSTALL:append = " fscryptctl-static"
+
+#20230113
+IMAGE_INSTALL:append = " dialog-static"
+
+#20230429
+IMAGE_INSTALL:append = " argon2-static"
+
+#20230916
+IMAGE_INSTALL:append = " openssl-bin-static"
+
+#20230404 removed...
+#20230114 gui-engine is an example app statically-linked uses framebuffer.
+#IMAGE_INSTALL:append = " libsdl-fb-static libsdl-gfx-fb-static gui-engine"
+#20230116
+#IMAGE_INSTALL:append = " freetype-static libsdl-ttf-static"
+#20230117 for fbwhiptail ...
+#IMAGE_INSTALL:append = " libpng-static pixman-static cairo-static"
+#20230118 libpng-static now a dep of freetype-static...
+#IMAGE_INSTALL:append = " libpng-static"
+#20230119
+#IMAGE_INSTALL:append = " libsdl-image-static"
+
+#20240211
+IMAGE_INSTALL:append = " hwclock-static"
+
+#20240315
+IMAGE_INSTALL:append = " btrfs-tools-static"
+
+PARALLEL_MAKE = "-j 2"
+PARALLEL_MAKEINST = "-j 2"
+BB_NUMBER_THREADS = "4"
+
+#this globally changes the base revision from r0...
+#20230903 bump to r1
+PR = "r1"
+#.bbappend recipes can use this to bump PR. ex: PR = "r${@int(PR_NUM) + 1}"
+PR_NUM = "1"
+

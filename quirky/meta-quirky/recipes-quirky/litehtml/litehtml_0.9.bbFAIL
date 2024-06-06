@@ -1,0 +1,19 @@
+# Recipe created by recipetool
+# recipetool create -o litehtml_0.9.bb https://github.com/litehtml/litehtml/archive/refs/tags/v0.9.tar.gz
+
+LICENSE = "Apache-2.0"
+LIC_FILES_CHKSUM = "file://LICENSE;md5=55d411204c54bf2524f471635a7d306a"
+
+SRC_URI = "https://github.com/litehtml/litehtml/archive/refs/tags/v${PV}.tar.gz"
+SRC_URI[sha256sum] = "ef957307da15b1258a70961942840bcf54225a8d75315dcbc156186eba35b1a7"
+
+# vim-native has 'xxd' utility...
+DEPENDS = "vim-native ncurses gettext-native"
+
+inherit cmake
+
+# 20220610 aarch64: add -DBUILD_TESTING=false
+EXTRA_OECMAKE = "-DBUILD_SHARED_LIBS=true -DBUILD_TESTING=false"
+
+HOMEPAGE = "https://github.com/litehtml/litehtml"
+SUMMARY = "Lightweight HTML/CSS rendering engine"

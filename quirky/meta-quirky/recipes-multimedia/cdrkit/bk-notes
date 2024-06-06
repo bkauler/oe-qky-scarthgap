@@ -1,0 +1,3 @@
+20240106 scarthgap
+the official recipe, in meta-oe/recipes-multimedia/cdrkit, does not
+respect usrmerge, installs into /usr/sbin

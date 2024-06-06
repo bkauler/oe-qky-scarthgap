@@ -1,0 +1,6 @@
+
+#20240527 cut down...
+PACKAGECONFIG = "python3 parted fs mdraid btrfs crypto"
+
+#fix do_configure fail...
+DEPENDS:append = " keyutils"

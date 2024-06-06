@@ -1,0 +1,31 @@
+From 1da0e92dfee9d3ecaad6dc7aabf1a3bc466cb314 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Andreas=20M=C3=BCller?= <schnitzeltony@googlemail.com>
+Date: Sun, 13 Mar 2016 12:05:40 +0100
+Subject: [PATCH 1/2] configure.ac: add missing HAVE_INTROSPECTION check
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Upstream-Status: Inappropriate [configuration]
+
+Signed-off-by: Andreas Müller <schnitzeltony@googlemail.com>
+---
+ configure.ac | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/configure.ac b/configure.ac
+index 9773fa8..e090875 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -384,6 +384,8 @@ if test "x$enable_introspection" != "xyes"; then
+ 	has_gobject=no
+ fi
+ AM_CONDITIONAL(ENABLE_GOBJECT, test x$has_gobject != xno)
++AM_CONDITIONAL(HAVE_INTROSPECTION, test x$has_gobject != xno)
++
+ m4_ifdef([GTK_DOC_CHECK], [
+ GTK_DOC_CHECK([1.14],[--flavour no-tmpl])
+ ],[
+-- 
+2.5.0
+

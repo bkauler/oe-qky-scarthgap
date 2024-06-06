@@ -1,0 +1,30 @@
+# Recipe created by recipetool
+# recipetool create -o audacity_3.4.2.bb https://github.com/audacity/audacity/releases/download/Audacity-3.4.2/audacity-sources-3.4.2.tar.gz
+
+SUMMARY = "Multitrack audio editor"
+HOMEPAGE = "https://www.audacityteam.org/"
+
+LICENSE = "LGPL-2.1-only"
+LIC_FILES_CHKSUM = "file://LICENSE.txt;md5=6d882aef5c0c657642f80c42d9c733c8"
+
+SRC_URI = "https://github.com/audacity/audacity/releases/download/Audacity-${PV}/audacity-sources-${PV}.tar.gz"
+
+SRC_URI[sha256sum] = "f28dd718d2c5a2aa9f207b8351443a90c1f02b65378ca94bcc7febda42635e48"
+
+S = "${WORKDIR}/${BPN}-sources-${PV}"
+
+DEPENDS = "virtual/libgl python3 ffmpeg gtk+3 gtk+ alsa-lib \
+           cairo expat flac gdk-pixbuf glib-2.0 glib-2.0-native harfbuzz libid3tag \
+           libmad lame mpg123 libogg pango libsndfile1 sox sqlite3 util-linux \
+           vamps libvorbis wavpack zlib jack pulseaudio libopus portaudio-v19 \
+           wxwidgets-native"
+
+inherit cmake pkgconfig python3native python3-dir
+
+EXTRA_OECMAKE = "-Daudacity_use_ffmpeg=loaded -DCMAKE_BUILD_TYPE=release \
+       -Daudacity_lib_preference=system -Daudacity_obey_system_dependencies=on \
+       -Daudacity_conan_allow_prebuilt_binaries=on -Daudacity_use_lv2=local \
+       -Daudacity_use_portmixer=local -Daudacity_use_midi=local \
+       -Daudacity_use_vamp=local -Daudacity_use_portsmf=local \
+       -Daudacity_use_sbsms=local -Daudacity_use_soundtouch=local \
+       -Daudacity_use_twolame=local"

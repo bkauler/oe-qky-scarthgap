@@ -1,0 +1,3 @@
+20240528
+udisks2 2.9.4 requires older libblockdev 2.2x, i have named it libblockdev2.
+note also, udisks2 2.10.x requires normal libblockdev 3.x

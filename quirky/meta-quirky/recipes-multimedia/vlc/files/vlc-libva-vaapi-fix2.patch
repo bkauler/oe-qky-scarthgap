@@ -1,0 +1,60 @@
+diff -Naur vlc-3.0.20ORIG/configure.ac vlc-3.0.20/configure.ac
+--- vlc-3.0.20ORIG/configure.ac	2023-10-30 15:25:45.000000000 +0800
++++ vlc-3.0.20/configure.ac	2024-05-26 09:55:09.826569375 +0800
+@@ -2444,25 +2444,6 @@
+ AM_CONDITIONAL([HAVE_VAAPI_X11], [test "${have_vaapi_x11}" = "yes"])
+ AM_CONDITIONAL([HAVE_VAAPI_WL], [test "${have_vaapi_wl}" = "yes"])
+ 
+-have_avcodec_vaapi="no"
+-AS_IF([test "${have_vaapi}" = "yes" -a "${have_avcodec}" = "yes"], [
+-  VLC_SAVE_FLAGS
+-  CPPFLAGS="${CPPFLAGS} ${AVCODEC_CFLAGS}"
+-  CFLAGS="${CFLAGS} ${AVCODEC_CFLAGS}"
+-  AC_CHECK_HEADERS([libavcodec/vaapi.h], [
+-    AC_MSG_NOTICE([VA API acceleration activated])
+-    have_avcodec_vaapi="yes"
+-  ],[
+-    AS_IF([test -n "${enable_libva}"], [
+-      AC_MSG_ERROR([libva is present but libavcodec/vaapi.h is missing])
+-    ], [
+-      AC_MSG_WARN([libva is present but libavcodec/vaapi.h is missing ])
+-    ])
+-  ])
+-  VLC_RESTORE_FLAGS
+-])
+-AM_CONDITIONAL([HAVE_AVCODEC_VAAPI], [test "${have_avcodec_vaapi}" = "yes"])
+-
+ dnl
+ dnl dxva2 needs avcodec
+ dnl
+diff -Naur vlc-3.0.20ORIG/modules/codec/avcodec/vaapi.c vlc-3.0.20/modules/codec/avcodec/vaapi.c
+--- vlc-3.0.20ORIG/modules/codec/avcodec/vaapi.c	2023-04-23 07:27:28.000000000 +0800
++++ vlc-3.0.20/modules/codec/avcodec/vaapi.c	2024-05-26 09:44:59.993247573 +0800
+@@ -42,7 +42,6 @@
+ # include <va/va_drm.h>
+ #endif
+ #include <libavcodec/avcodec.h>
+-#include <libavcodec/vaapi.h>
+ 
+ #include "avcodec.h"
+ #include "va.h"
+diff -Naur vlc-3.0.20ORIG/modules/codec/Makefile.am vlc-3.0.20/modules/codec/Makefile.am
+--- vlc-3.0.20ORIG/modules/codec/Makefile.am	2023-08-05 18:03:51.000000000 +0800
++++ vlc-3.0.20/modules/codec/Makefile.am	2024-05-26 10:30:34.089862520 +0800
+@@ -417,12 +417,12 @@
+ libvaapi_plugin_la_CPPFLAGS = $(AM_CPPFLAGS)
+ libvaapi_plugin_la_CFLAGS = $(AM_CFLAGS) $(AVCODEC_CFLAGS)
+ libvaapi_plugin_la_LIBADD = $(LIBVA_LIBS)
+-if HAVE_AVCODEC_VAAPI
+-if HAVE_VAAPI_DRM
+-codec_LTLIBRARIES += libvaapi_drm_plugin.la
+-endif
++
++if HAVE_AVCODEC
++if HAVE_VAAPI
+ codec_LTLIBRARIES += libvaapi_plugin.la
+ endif
++endif
+ 
+ libd3d9_common_la_SOURCES = video_chroma/d3d9_fmt.c video_chroma/d3d9_fmt.h \
+ 	video_chroma/dxgi_fmt.c video_chroma/dxgi_fmt.h

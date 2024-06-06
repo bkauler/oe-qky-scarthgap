@@ -1,0 +1,4 @@
+20241003
+scarthgap
+this is a dep of libreoffice
+ERROR: archive-zip-native-1.31-r0 do_populate_sysroot: QA Issue: : /work/x86_64-linux/archive-zip-native/1.31/sysroot-destdir/work/x86_64-linux/archive-zip-native/1.31/recipe-sysroot-native/usr/bin/crc32 maximum shebang size exceeded, the maximum size is 128. [shebang-size]

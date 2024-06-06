@@ -1,0 +1,9 @@
+--- a/src/object/uri.cpp     2024-01-27 15:42:32.772579666 +0000
++++ b/src/object/uri.cpp
+@@ -19,6 +19,7 @@
+ #include <glibmm/convert.h>
+ #include <glibmm/ustring.h>
+ #include <glibmm/miscutils.h>
++#include <libxml/xmlmemory.h>
+ 
+ #include "bad-uri-exception.h"

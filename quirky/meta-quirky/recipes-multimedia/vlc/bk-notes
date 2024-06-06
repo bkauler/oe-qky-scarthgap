@@ -1,0 +1,10 @@
+
+configure: error: libva is present but libavcodec/vaapi.h is missing
+
+see:
+https://code.videolan.org/videolan/vlc/-/merge_requests/1238
+https://code.videolan.org/videolan/vlc/-/merge_requests/1238/diffs?commit_id=1ee376ac54fe5791f8bb36415e04f65d1165e37e
+
+have created patch vlc-libva-vaapi-fix.patch
+
+FAIL! leave out libva dep.

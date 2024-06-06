@@ -1,0 +1,7 @@
+20240606
+--------
+scarthgap has grep 3.11
+it outputs a warning:
+"grep: warning: stray \ before -"
+this got introduced with 3.8
+lots of my scripts have these stray backslashes.
