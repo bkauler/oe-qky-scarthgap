@@ -1,2 +1,2 @@
 # oe-qky-scarthgap
-meta-quirky layer based on OpenEmbedded Scarthgap
+Meta-quirky layer based on OpenEmbedded Scarthgap
