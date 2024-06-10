@@ -4,3 +4,8 @@
 do_packagedata() {
  true
 }
+
+#20240610
+do_package_write_deb() {
+ true
+}
