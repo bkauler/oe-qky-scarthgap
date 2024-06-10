@@ -1,7 +1,7 @@
-diff -Naur linux-5.10/include/uapi/linux/capability.h linux-5.10P1/include/uapi/linux/capability.h
---- linux-5.10/include/uapi/linux/capability.h	2020-12-07 06:25:12.000000000 +0800
-+++ linux-5.10P1/include/uapi/linux/capability.h	2020-12-14 11:03:39.127180439 +0800
-@@ -417,7 +417,9 @@
+diff -Naur linux-6.6-P6.6.11/include/uapi/linux/capability.h linux-6.6/include/uapi/linux/capability.h
+--- linux-6.6-P6.6.11/include/uapi/linux/capability.h	2023-10-30 10:31:08.000000000 +0800
++++ linux-6.6/include/uapi/linux/capability.h	2024-01-15 17:14:03.213309626 +0800
+@@ -418,7 +418,9 @@
  
  #define CAP_CHECKPOINT_RESTORE	40
  
@@ -12,9 +12,9 @@ diff -Naur linux-5.10/include/uapi/linux/capability.h linux-5.10P1/include/uapi/
  
  #define cap_valid(x) ((x) >= 0 && (x) <= CAP_LAST_CAP)
  
-diff -Naur linux-5.10/security/selinux/include/classmap.h linux-5.10P1/security/selinux/include/classmap.h
---- linux-5.10/security/selinux/include/classmap.h	2020-12-07 06:25:12.000000000 +0800
-+++ linux-5.10P1/security/selinux/include/classmap.h	2020-12-14 11:09:33.393857376 +0800
+diff -Naur linux-6.6-P6.6.11/security/selinux/include/classmap.h linux-6.6/security/selinux/include/classmap.h
+--- linux-6.6-P6.6.11/security/selinux/include/classmap.h	2023-10-30 10:31:08.000000000 +0800
++++ linux-6.6/security/selinux/include/classmap.h	2024-01-15 17:14:03.216642959 +0800
 @@ -28,9 +28,9 @@
  
  #define COMMON_CAP2_PERMS  "mac_override", "mac_admin", "syslog", \

@@ -1,7 +1,7 @@
-diff -Naur linux-5.10P1/fs/cachefiles/daemon.c linux-5.10P2/fs/cachefiles/daemon.c
---- linux-5.10P1/fs/cachefiles/daemon.c	2020-12-07 06:25:12.000000000 +0800
-+++ linux-5.10P2/fs/cachefiles/daemon.c	2020-12-14 11:22:48.633880384 +0800
-@@ -87,7 +87,7 @@
+diff -Naur linux-6.6K6.6.11-CAP1/fs/cachefiles/daemon.c linux-6.6/fs/cachefiles/daemon.c
+--- linux-6.6K6.6.11-CAP1/fs/cachefiles/daemon.c	2023-10-30 10:31:08.000000000 +0800
++++ linux-6.6/fs/cachefiles/daemon.c	2024-01-15 17:25:24.283296744 +0800
+@@ -92,7 +92,7 @@
  	_enter("");
  
  	/* only the superuser may do this */
@@ -10,34 +10,34 @@ diff -Naur linux-5.10P1/fs/cachefiles/daemon.c linux-5.10P2/fs/cachefiles/daemon
  		return -EPERM;
  
  	/* the cachefiles device may only be open once at a time */
-diff -Naur linux-5.10P1/fs/ext4/ioctl.c linux-5.10P2/fs/ext4/ioctl.c
---- linux-5.10P1/fs/ext4/ioctl.c	2020-12-07 06:25:12.000000000 +0800
-+++ linux-5.10P2/fs/ext4/ioctl.c	2020-12-14 11:25:08.440551087 +0800
-@@ -605,7 +605,7 @@
- 	struct ext4_sb_info *sbi = EXT4_SB(sb);
- 	__u32 flags;
+diff -Naur linux-6.6K6.6.11-CAP1/fs/ext4/ioctl.c linux-6.6/fs/ext4/ioctl.c
+--- linux-6.6K6.6.11-CAP1/fs/ext4/ioctl.c	2023-10-30 10:31:08.000000000 +0800
++++ linux-6.6/fs/ext4/ioctl.c	2024-01-15 17:25:24.283296744 +0800
+@@ -839,7 +839,7 @@
+ {
+ 	u32 flags;
  
 -	if (!capable(CAP_SYS_ADMIN))
 +	if (!capable(CAP_SYS_MOUNT))
  		return -EPERM;
  
  	if (get_user(flags, (__u32 __user *)arg))
-diff -Naur linux-5.10P1/fs/namespace.c linux-5.10P2/fs/namespace.c
---- linux-5.10P1/fs/namespace.c	2020-12-07 06:25:12.000000000 +0800
-+++ linux-5.10P2/fs/namespace.c	2020-12-14 11:27:05.200554488 +0800
-@@ -1690,7 +1690,7 @@
+diff -Naur linux-6.6K6.6.11-CAP1/fs/namespace.c linux-6.6/fs/namespace.c
+--- linux-6.6K6.6.11-CAP1/fs/namespace.c	2023-10-30 10:31:08.000000000 +0800
++++ linux-6.6/fs/namespace.c	2024-01-15 17:25:24.286630077 +0800
+@@ -1841,7 +1841,7 @@
   */
- static inline bool may_mount(void)
+ bool may_mount(void)
  {
 -	return ns_capable(current->nsproxy->mnt_ns->user_ns, CAP_SYS_ADMIN);
 +	return ns_capable(current->nsproxy->mnt_ns->user_ns, CAP_SYS_MOUNT);
  }
  
- #ifdef	CONFIG_MANDATORY_FILE_LOCKING
-diff -Naur linux-5.10P1/fs/super.c linux-5.10P2/fs/super.c
---- linux-5.10P1/fs/super.c	2020-12-07 06:25:12.000000000 +0800
-+++ linux-5.10P2/fs/super.c	2020-12-14 11:28:35.303890430 +0800
-@@ -485,9 +485,9 @@
+ /**
+diff -Naur linux-6.6K6.6.11-CAP1/fs/super.c linux-6.6/fs/super.c
+--- linux-6.6K6.6.11-CAP1/fs/super.c	2023-10-30 10:31:08.000000000 +0800
++++ linux-6.6/fs/super.c	2024-01-15 17:25:24.286630077 +0800
+@@ -735,9 +735,9 @@
  bool mount_capable(struct fs_context *fc)
  {
  	if (!(fc->fs_type->fs_flags & FS_USERNS_MOUNT))
