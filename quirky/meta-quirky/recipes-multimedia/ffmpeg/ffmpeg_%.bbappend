@@ -20,3 +20,8 @@ EXTRA_OECONF:append = " --enable-nonfree"
 
 #20240105 scarthgap
 PACKAGECONFIG:append = " vaapi vdpau"
+
+#20240623 plinej: https://forum.puppylinux.com/viewtopic.php?p=124000#p124000
+EXTRA_OECONF:append = " --enable-libpulse"
+DEPENDS:append = " pulseaudio"
+
