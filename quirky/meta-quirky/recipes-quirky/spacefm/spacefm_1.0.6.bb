@@ -16,10 +16,11 @@ SRC_URI = "https://github.com/IgnorantGuru/spacefm/archive/refs/tags/${PV}.tar.g
 
 SRC_URI[sha256sum] = "fedea9fcad776e0af4b8d90c5a1c86684a9c96ef1cdd4e959530ce93bdebe7c9"
 
+#20240702 already in another pkg:  eject
 DEPENDS = "libx11 eudev intltool-native \
            gdk-pixbuf cairo glib-2.0 glib-2.0-native pango \
            startup-notification shared-mime-info gtk+ \
-           dbus dbus-glib eject lsof sshfs-fuse wget \
+           dbus dbus-glib lsof sshfs-fuse wget \
            curlftpfs gphotofs bash"
 
 inherit gettext pkgconfig autotools
