@@ -9,12 +9,14 @@ SRC_URI[md5sum] = "66bc8ccb241123aa61d405a576763a44"
 SRC_URI[sha256sum] = "82ec8ea11d239c9967dbd1717cac09c8330a558e025b3e4dc6a7594e80d13bb1"
 
 #just threw in all those -native in case needed...
+#20240710 add: cyrus-sasl
 DEPENDS = "gnutls gnutls-native openssl openssl-native zlib curl curl-native \
-           db db-native expat expat-native nettle nettle-native libunistring gmp"
+           db db-native expat expat-native nettle nettle-native libunistring gmp cyrus-sasl"
 
 inherit autotools pkgconfig gettext
 
-EXTRA_OECONF = " --with-zlib --enable-ipv6 --disable-lockfile --enable-shared --disable-static"
+#20240710 add: --with-sasl
+EXTRA_OECONF = " --with-zlib --enable-ipv6 --disable-lockfile --enable-shared --disable-static --with-sasl"
 
 do_configure:prepend() {
  touch ${S}/README
@@ -25,6 +27,7 @@ SECTION = "libs"
 SUMMARY = "A library for communicating with mail and news servers"
 
 #QA Issue: libetpan.pc failed sanity test 
+#20240710 add: -lsasl2
 do_install:append() {
- sed -i -e 's%^Libs: .*%Libs: -L${libdir} -letpan -lz -lssl -lcrypto -ldb-5%' ${D}/usr/lib/pkgconfig/libetpan.pc
+ sed -i -e 's%^Libs: .*%Libs: -L${libdir} -letpan -lz -lssl -lcrypto -ldb-5 -lsasl2%' ${D}/usr/lib/pkgconfig/libetpan.pc
 }
