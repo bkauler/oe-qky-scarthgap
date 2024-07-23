@@ -1,0 +1,15 @@
+---
+ Makefile.am |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -17,7 +17,7 @@ XVkbd-common.h: XVkbd-common.ad
+ 	[ which ad2c > /dev/null ] || ad2c XVkbd-common.ad > XVkbd-common.h
+ 
+ install-data-hook:
+-	[ -d $(DESTDIR)$(appdefaultdir) ] || mkdir $(DESTDIR)$(appdefaultdir)
++	[ -d $(DESTDIR)$(appdefaultdir) ] || mkdir -p $(DESTDIR)$(appdefaultdir)
+ 	for file in *.ad; do \
+ 		$(INSTALL_DATA) $$file $(DESTDIR)$(appdefaultdir)/$${file%.ad}; \
+ 	done
