@@ -1,0 +1,271 @@
+Replace default fonts with Dejavu Sans/Serif.
+
+James 2023
+
+diff -ur xvkbd-4.1-orig/XVkbd-common.ad xvkbd-4.1/XVkbd-common.ad
+--- xvkbd-4.1-orig/XVkbd-common.ad	2020-05-03 19:24:53.000000000 +1000
++++ xvkbd-4.1/XVkbd-common.ad	2023-04-19 01:07:30.787233892 +1000
+@@ -56,14 +56,14 @@
+ XVkbd*Repeater.minimumDelay: 100
+ XVkbd*Repeater.decay: 500
+ 
+-XVkbd*Font: -*-helvetica-medium-r-*-*-12-*-*-*-*-*-iso8859-1
+-XVkbd*generalFont: -*-lucidatypewriter-bold-r-*-*-12-*-*-*-*-*-iso8859-1
+-XVkbd*letterFont: -*-helvetica-bold-r-*-*-12-*-*-*-*-*-iso8859-1
+-XVkbd*specialFont: -*-helvetica-medium-r-*-*-12-*-*-*-*-*-iso8859-1
+-XVkbd*keypadFont: -*-helvetica-medium-r-*-*-10-*-*-*-*-*-iso8859-1
+-XVkbd*banner.font: -*-lucida-bold-i-*-*-14-*-*-*-*-*-iso8859-1
+-XVkbd*display_panel*label.font: -*-helvetica-bold-r-*-*-12-*-*-*-*-*-iso8859-1
+-XVkbd*completion_list.font: -*-lucida-medium-r-*-*-14-*-*-*-*-*-iso8859-1
++XVkbd*Font: -misc-dejavu sans-medium-r-normal--12-*-*-*-p-*-*-*
++XVkbd*generalFont: -misc-dejavu serif-bold-r-normal--12-*-*-*-p-*-*-*
++XVkbd*letterFont: -misc-dejavu sans-bold-r-normal--12-*-*-*-p-*-*-*
++XVkbd*specialFont: -misc-dejavu sans-medium-r-normal--12-*-*-*-p-*-*-*
++XVkbd*keypadFont: -misc-dejavu sans-medium-r-normal--10-*-*-*-p-*-*-*
++XVkbd*banner.font: -misc-dejavu serif-bold-r-normal--14-*-*-*-p-*-*-*
++XVkbd*display_panel*label.font: -misc-dejavu sans-bold-r-normal--12-*-*-*-p-*-*-*
++XVkbd*completion_list.font: -misc-dejavu serif-medium-r-normal--10-*-*-*-p-*-*-*
+ 
+ XVkbd*beNiceToColormap: false
+ XVkbd*topShadowContrast: 40
+@@ -238,8 +238,8 @@
+ XVkbd*completion_panel*view.completion_list.width: 400
+ XVkbd*completion_panel*view.completion_list.height: 150
+ 
+-XVkbd*completion_panel*label.font: -*-helvetica-bold-r-*-*-12-*-*-*-*-*-iso8859-1
+-XVkbd*completion_panel*completion_list.font: -*-lucida-medium-r-*-*-14-*-*-*-*-*-iso8859-1
++XVkbd*completion_panel*label.font: -misc-dejavu sans-bold-r-normal--12-*-*-*-p-*-*-*
++XVkbd*completion_panel*list.font: -misc-dejavu serif-medium-r-normal--14-*-*-*-p-*-*-*
+ XVkbd*completion_panel*label.label: Completion:
+ XVkbd*completion_panel*bottom: chainTop
+ XVkbd*completion_panel*label.right: chainLeft
+@@ -285,8 +285,8 @@
+ XVkbd*edit_fkey_panel*save_button.label: Save
+ XVkbd*edit_fkey_panel*close_button.label: Close
+ 
+-XVkbd*edit_fkey_panel*Label.font: -*-helvetica-bold-r-*-*-12-*-*-*-*-*-iso8859-1
+-XVkbd*edit_fkey_panel*fkey_value_menu.font: -*-helvetica-bold-r-*-*-12-*-*-*-*-*-iso8859-1
++XVkbd*edit_fkey_panel*Label.font: -misc-dejavu sans-bold-r-normal--12-*-*-*-p-*-*-*
++XVkbd*edit_fkey_panel*fkey_value_menu.font: -misc-dejavu sans-bold-r-normal--12-*-*-*-p-*-*-*
+ 
+ !! Dead Keys
+ !
+@@ -295,7 +295,7 @@
+   dead_tilde,dead_abovedot
+ 
+ XVkbd*deadkey_panel.title: xvkbd - dead keys
+-XVkbd*deadkey_panel*font: -*-helvetica-medium-r-*-*-24-*-*-*-*-*-iso8859-1
++XVkbd*deadkey_panel*font: -misc-dejavu sans-medium-r-normal--24-*-*-*-p-*-*-*
+ XVkbd*deadkey_panel*Repeater.width: 30
+ XVkbd*deadkey_panel*Repeater.height: 36
+ XVkbd*deadkey_panel*dead_diaeresis.label: \250
+@@ -364,7 +364,7 @@
+ 
+ !! You should set the label font if you want to make the window small.
+ !
+-!xvkbd*Font: -misc-fixed-medium-r-semicondensed--13-*-iso8859-1
++!xvkbd*Font: -misc-dejavu sans condensed-medium-r-narrow--13-*-*-*-p-*-*-*
+ 
+ !! Default keyboard layout which is coded in the source
+ 
+Only in xvkbd-4.1: XVkbd-common.ad.orig
+Only in xvkbd-4.1: XVkbd-common.ad.rej
+diff -ur xvkbd-4.1-orig/XVkbd-common.h xvkbd-4.1/XVkbd-common.h
+--- xvkbd-4.1-orig/XVkbd-common.h	2020-05-03 19:24:56.000000000 +1000
++++ xvkbd-4.1/XVkbd-common.h	2023-04-19 01:05:36.713240647 +1000
+@@ -39,14 +39,14 @@
+ "XVkbd*Repeater.initialDelay: 600",
+ "XVkbd*Repeater.minimumDelay: 100",
+ "XVkbd*Repeater.decay: 500",
+-"XVkbd*Font: -*-helvetica-medium-r-*-*-12-*-*-*-*-*-iso8859-1",
+-"XVkbd*generalFont: -*-lucidatypewriter-bold-r-*-*-12-*-*-*-*-*-iso8859-1",
+-"XVkbd*letterFont: -*-helvetica-bold-r-*-*-12-*-*-*-*-*-iso8859-1",
+-"XVkbd*specialFont: -*-helvetica-medium-r-*-*-12-*-*-*-*-*-iso8859-1",
+-"XVkbd*keypadFont: -*-helvetica-medium-r-*-*-10-*-*-*-*-*-iso8859-1",
+-"XVkbd*banner.font: -*-lucida-bold-i-*-*-14-*-*-*-*-*-iso8859-1",
+-"XVkbd*display_panel*label.font: -*-helvetica-bold-r-*-*-12-*-*-*-*-*-iso8859-1",
+-"XVkbd*completion_list.font: -*-lucida-medium-r-*-*-14-*-*-*-*-*-iso8859-1",
++"XVkbd*Font: -misc-dejavu sans-medium-r-normal--12-*-*-*-p-*-*-*",
++"XVkbd*generalFont: -misc-dejavu serif-bold-r-normal--12-*-*-*-p-*-*-*",
++"XVkbd*letterFont: -misc-dejavu sans-bold-r-normal--12-*-*-*-p-*-*-*",
++"XVkbd*specialFont: -misc-dejavu sans-medium-r-normal--12-*-*-*-p-*-*-*",
++"XVkbd*keypadFont: -misc-dejavu sans-medium-r-normal--10-*-*-*-p-*-*-*",
++"XVkbd*banner.font: -misc-dejavu serif-bold-r-normal--14-*-*-*-p-*-*-*",
++"XVkbd*display_panel*label.font: -misc-dejavu sans-bold-r-normal--12-*-*-*-p-*-*-*",
++"XVkbd*completion_list.font: -misc-dejavu serif-medium-r-normal--10-*-*-*-p-*-*-*",
+ "XVkbd*beNiceToColormap: false",
+ "XVkbd*topShadowContrast: 40",
+ "XVkbd*bottomShadowContrast: 80",
+@@ -206,8 +206,8 @@
+ "XVkbd*completion_panel*view.forceBars: true",
+ "XVkbd*completion_panel*view.completion_list.width: 400",
+ "XVkbd*completion_panel*view.completion_list.height: 150",
+-"XVkbd*completion_panel*label.font: -*-helvetica-bold-r-*-*-12-*-*-*-*-*-iso8859-1",
+-"XVkbd*completion_panel*completion_list.font: -*-lucida-medium-r-*-*-14-*-*-*-*-*-iso8859-1",
++"XVkbd*completion_panel*label.font: -misc-dejavu sans-bold-r-normal--12-*-*-*-p-*-*-*",
++"XVkbd*completion_panel*list.font: -misc-dejavu serif-medium-r-normal--14-*-*-*-p-*-*-*",
+ "XVkbd*completion_panel*label.label: Completion:",
+ "XVkbd*completion_panel*bottom: chainTop",
+ "XVkbd*completion_panel*label.right: chainLeft",
+@@ -250,13 +250,13 @@
+ "XVkbd*edit_fkey_panel*fkey_value_sep.horizDistance: 0",
+ "XVkbd*edit_fkey_panel*save_button.label: Save",
+ "XVkbd*edit_fkey_panel*close_button.label: Close",
+-"XVkbd*edit_fkey_panel*Label.font: -*-helvetica-bold-r-*-*-12-*-*-*-*-*-iso8859-1",
+-"XVkbd*edit_fkey_panel*fkey_value_menu.font: -*-helvetica-bold-r-*-*-12-*-*-*-*-*-iso8859-1",
++"XVkbd*edit_fkey_panel*Label.font: -misc-dejavu sans-bold-r-normal--12-*-*-*-p-*-*-*",
++"XVkbd*edit_fkey_panel*fkey_value_menu.font: -misc-dejavu sans-bold-r-normal--12-*-*-*-p-*-*-*",
+ "XVkbd.deadkeys: dead_diaeresis,dead_acute,dead_grave,\
+   dead_circumflex,dead_macron,dead_abovering,dead_doubleacute,\
+   dead_tilde,dead_abovedot",
+ "XVkbd*deadkey_panel.title: xvkbd - dead keys",
+-"XVkbd*deadkey_panel*font: -*-helvetica-medium-r-*-*-24-*-*-*-*-*-iso8859-1",
++"XVkbd*deadkey_panel*font: -misc-dejavu sans-medium-r-normal--24-*-*-*-p-*-*-*",
+ "XVkbd*deadkey_panel*Repeater.width: 30",
+ "XVkbd*deadkey_panel*Repeater.height: 36",
+ "XVkbd*deadkey_panel*dead_diaeresis.label: \\250",
+Only in xvkbd-4.1: XVkbd-common.h.orig
+Only in xvkbd-4.1: XVkbd-common.h.rej
+diff -ur xvkbd-4.1-orig/XVkbd-greek.ad xvkbd-4.1/XVkbd-greek.ad
+--- xvkbd-4.1-orig/XVkbd-greek.ad	2020-02-08 21:34:33.000000000 +1000
++++ xvkbd-4.1/XVkbd-greek.ad	2023-04-19 01:01:00.690256993 +1000
+@@ -11,8 +11,8 @@
+ 
+ !XVkbd*generalFont: -*-lucidatypewriter-bold-r-*-*-12-*-*-*-*-*-iso8859-7
+ !XVkbd*letterFont: -*-helvetica-bold-r-*-*-12-*-*-*-*-*-iso8859-7
+-XVkbd*generalFont: -*-*-bold-r-*-*-12-*-*-*-*-*-iso8859-7
+-XVkbd*letterFont: -*-*-bold-r-*-*-12-*-*-*-*-*-iso8859-7
++XVkbd*generalFont: -misc-dejavu serif-bold-r-normal--12-*-*-*-p-*-*-*
++XVkbd*letterFont: -misc-dejavu sans-bold-r-normal--12-*-*-*-p-*-*-*
+ 
+ xvkbd*Mode_switch.width: 50
+ xvkbd*space.width: 110
+diff -ur xvkbd-4.1-orig/XVkbd-hebrew.ad xvkbd-4.1/XVkbd-hebrew.ad
+--- xvkbd-4.1-orig/XVkbd-hebrew.ad	2020-02-08 21:34:33.000000000 +1000
++++ xvkbd-4.1/XVkbd-hebrew.ad	2023-04-19 01:01:00.690256993 +1000
+@@ -9,8 +9,8 @@
+ !
+ xvkbd.title: xvkbd - Virtual Keyboard (Hebrew)
+ 
+-xvkbd*generalFont: -*-*-*-r-*-*-14-*-*-*-*-*-iso8859-8
+-xvkbd*letterFont: -*-*-*-r-*-*-14-*-*-*-*-*-iso8859-8
++xvkbd*generalFont: -misc-dejavu serif-bold-r-normal--12-*-*-*-p-*-*-*
++xvkbd*letterFont: -misc-dejavu sans-bold-r-normal--12-*-*-*-p-*-*-*
+ 
+ xvkbd*Mode_switch.width: 50
+ xvkbd*space.width: 110
+diff -ur xvkbd-4.1-orig/XVkbd-jisx6002.ad xvkbd-4.1/XVkbd-jisx6002.ad
+--- xvkbd-4.1-orig/XVkbd-jisx6002.ad	2020-02-08 21:34:33.000000000 +1000
++++ xvkbd-4.1/XVkbd-jisx6002.ad	2023-04-19 01:01:00.690256993 +1000
+@@ -26,8 +26,8 @@
+ xvkbd*row3*international: true
+ xvkbd*row4*international: true
+ xvkbd*row5*international: true
+-xvkbd*specialFontSet: -*-helvetica-medium-r-*-*-12-*-*-*-*-*-iso8859-*,*--14-*
+-xvkbd*fontSet: -*-helvetica-bold-r-*-*-12-*-*-*-*-*-iso8859-*,*--14-*
++xvkbd*specialFontSet: -misc-dejavu sans-medium-r-normal--12-*-*-*-p-*-*-*,*--14-*
++xvkbd*fontSet: -misc-dejavu sans-bold-r-normal--12-*-*-*-p-*-*-*,*--14-*
+ xvkbd.modalKeytop: true
+ 
+ xvkbd.NormalKeys: \
+diff -ur xvkbd-4.1-orig/XVkbd-jisx6004.ad xvkbd-4.1/XVkbd-jisx6004.ad
+--- xvkbd-4.1-orig/XVkbd-jisx6004.ad	2020-02-08 21:34:33.000000000 +1000
++++ xvkbd-4.1/XVkbd-jisx6004.ad	2023-04-19 01:01:00.690256993 +1000
+@@ -26,8 +26,8 @@
+ xvkbd*row3*international: true
+ xvkbd*row4*international: true
+ xvkbd*row5*international: true
+-xvkbd*specialFontSet: -*-helvetica-medium-r-*-*-12-*-*-*-*-*-iso8859-*,*--14-*
+-xvkbd*fontSet: -*-helvetica-bold-r-*-*-12-*-*-*-*-*-iso8859-*,*--14-*
++xvkbd*specialFontSet: -misc-dejavu sans-medium-r-normal--12-*-*-*-p-*-*-*,*--14-*
++xvkbd*fontSet: -misc-dejavu sans-bold-r-normal--12-*-*-*-p-*-*-*,*--14-*
+ xvkbd.modalKeytop: true
+ 
+ xvkbd.NormalKeys: \
+diff -ur xvkbd-4.1-orig/XVkbd-korean.ad xvkbd-4.1/XVkbd-korean.ad
+--- xvkbd-4.1-orig/XVkbd-korean.ad	2020-02-08 21:34:33.000000000 +1000
++++ xvkbd-4.1/XVkbd-korean.ad	2023-04-19 01:01:00.690256993 +1000
+@@ -31,9 +31,9 @@
+ xvkbd*row3*international: true
+ xvkbd*row4*international: true
+ xvkbd*row5*international: true
+-xvkbd*specialFontSet: -*-helvetica-medium-r-*-*-12-*-*-*-*-*-iso8859-*,\
++xvkbd*specialFontSet: -misc-dejavu sans-medium-r-normal--12-*-*-*-p-*-*-*,\
+   -*-*-medium-r-*-*-12-*-*-*-*-*-ksc5601.1987-0,*--12-*
+-xvkbd*fontSet: -*-helvetica-bold-r-*-*-12-*-*-*-*-*-iso8859-*,\
++xvkbd*fontSet: -misc-dejavu sans-bold-r-normal--12-*-*-*-p-*-*-*,\
+   -*-*-medium-r-*-*-12-*-*-*-*-*-ksc5601.1987-0,*--12-*
+ xvkbd.modalKeytop: false
+ 
+diff -ur xvkbd-4.1-orig/XVkbd-russian.ad xvkbd-4.1/XVkbd-russian.ad
+--- xvkbd-4.1-orig/XVkbd-russian.ad	2020-02-08 21:34:33.000000000 +1000
++++ xvkbd-4.1/XVkbd-russian.ad	2023-04-19 01:01:00.690256993 +1000
+@@ -15,8 +15,8 @@
+ 
+ xvkbd.title: xvkbd - Virtual Keyboard (Russian)
+ 
+-xvkbd*generalFont: -*-fixed-medium-r-normal-*-13-*-*-*-*-*-koi8-r
+-xvkbd*letterFont: -*-fixed-medium-r-normal-*-13-*-*-*-*-*-koi8-r
++xvkbd*generalFont: -misc-dejavu serif-bold-r-normal--12-*-*-*-p-*-*-*
++xvkbd*letterFont: -misc-dejavu sans-bold-r-normal--12-*-*-*-p-*-*-*
+ 
+ xvkbd*space.width: 80
+ 
+diff -ur xvkbd-4.1-orig/XVkbd-slovene.ad xvkbd-4.1/XVkbd-slovene.ad
+--- xvkbd-4.1-orig/XVkbd-slovene.ad	2020-02-08 21:34:33.000000000 +1000
++++ xvkbd-4.1/XVkbd-slovene.ad	2023-04-19 01:01:00.690256993 +1000
+@@ -10,8 +10,8 @@
+ !
+ xvkbd.title: xvkbd - Virtual Keyboard (Slovene)
+ 
+-xvkbd*generalFont: -*-lucidatypewriter-bold-r-*-*-12-*-*-*-*-*-iso8859-2
+-xvkbd*letterFont: -*-helvetica-bold-r-*-*-12-*-*-*-*-*-iso8859-2
++xvkbd*generalFont: -misc-dejavu serif-bold-r-normal--12-*-*-*-p-*-*-*
++xvkbd*letterFont: -misc-dejavu sans-bold-r-normal--12-*-*-*-p-*-*-*
+ 
+ xvkbd*Shift_L.width: 45
+ xvkbd*space.width: 110
+@@ -80,10 +80,10 @@
+   dead_tilde,dead_abovedot,\
+   dead_ogonek,dead_cedilla
+ 
+-XVkbd*deadkey_panel*dead_caron.font: -*-helvetica-medium-r-*-*-24-*-*-*-*-*-iso8859-2
+-XVkbd*deadkey_panel*dead_breve.font: -*-helvetica-medium-r-*-*-24-*-*-*-*-*-iso8859-2
+-XVkbd*deadkey_panel*dead_ogonek.font: -*-helvetica-medium-r-*-*-24-*-*-*-*-*-iso8859-2
+-XVkbd*deadkey_panel*dead_cedilla.font: -*-helvetica-medium-r-*-*-24-*-*-*-*-*-iso8859-2
++XVkbd*deadkey_panel*dead_caron.font: -misc-dejavu sans-medium-r-normal--24-*-*-*-p-*-*-*
++XVkbd*deadkey_panel*dead_breve.font: -misc-dejavu sans-medium-r-normal--24-*-*-*-p-*-*-*
++XVkbd*deadkey_panel*dead_ogonek.font: -misc-dejavu sans-medium-r-normal--24-*-*-*-p-*-*-*
++XVkbd*deadkey_panel*dead_cedilla.font: -misc-dejavu sans-medium-r-normal--24-*-*-*-p-*-*-*
+ XVkbd*deadkey_panel*dead_caron.label: \267
+ XVkbd*deadkey_panel*dead_breve.label: \242
+ XVkbd*deadkey_panel*dead_ogonek.label: \262
+diff -ur xvkbd-4.1-orig/XVkbd-turkish.ad xvkbd-4.1/XVkbd-turkish.ad
+--- xvkbd-4.1-orig/XVkbd-turkish.ad	2020-02-08 21:34:33.000000000 +1000
++++ xvkbd-4.1/XVkbd-turkish.ad	2023-04-19 01:01:00.691256993 +1000
+@@ -10,8 +10,8 @@
+ !
+ xvkbd.title: xvkbd - Virtual Keyboard (Turkish)
+ 
+-xvkbd*generalFont: -*-lucidatypewriter-bold-r-*-*-12-*-*-*-*-*-iso8859-9
+-xvkbd*letterFont: -*-helvetica-bold-r-*-*-12-*-*-*-*-*-iso8859-9
++xvkbd*generalFont: -misc-dejavu serif-bold-r-normal--12-*-*-*-p-*-*-*
++xvkbd*letterFont: -misc-dejavu sans-bold-r-normal--12-*-*-*-p-*-*-*
+ 
+ xvkbd*Shift_L.width: 45
+ xvkbd*space.width: 110
+@@ -80,10 +80,10 @@
+   dead_tilde,dead_abovedot,\
+   dead_ogonek,dead_cedilla
+ 
+-XVkbd*deadkey_panel*dead_caron.font: -*-helvetica-medium-r-*-*-24-*-*-*-*-*-iso8859-2
+-XVkbd*deadkey_panel*dead_breve.font: -*-helvetica-medium-r-*-*-24-*-*-*-*-*-iso8859-2
+-XVkbd*deadkey_panel*dead_ogonek.font: -*-helvetica-medium-r-*-*-24-*-*-*-*-*-iso8859-2
+-XVkbd*deadkey_panel*dead_cedilla.font: -*-helvetica-medium-r-*-*-24-*-*-*-*-*-iso8859-2
++XVkbd*deadkey_panel*dead_caron.font: -misc-dejavu sans-medium-r-normal--24-*-*-*-p-*-*-*
++XVkbd*deadkey_panel*dead_breve.font: -misc-dejavu sans-medium-r-normal--24-*-*-*-p-*-*-*
++XVkbd*deadkey_panel*dead_ogonek.font: -misc-dejavu sans-medium-r-normal--24-*-*-*-p-*-*-*
++XVkbd*deadkey_panel*dead_cedilla.font: -misc-dejavu sans-medium-r-normal--24-*-*-*-p-*-*-*
+ XVkbd*deadkey_panel*dead_caron.label: \267
+ XVkbd*deadkey_panel*dead_breve.label: \242
+ XVkbd*deadkey_panel*dead_ogonek.label: \262

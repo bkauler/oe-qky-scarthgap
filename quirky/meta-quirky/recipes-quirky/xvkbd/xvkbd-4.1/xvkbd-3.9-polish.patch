@@ -1,0 +1,120 @@
+diff -rupN xvkbd-3.9/Imakefile xvkbd-3.9-new/Imakefile
+--- xvkbd-3.9/Imakefile	2018-02-24 02:12:28.000000000 -0500
++++ xvkbd-3.9-new/Imakefile	2018-05-27 19:58:13.385923135 -0400
+@@ -57,6 +57,7 @@ InstallAppDefaults(XVkbd-jisx6004)
+ InstallAppDefaults(XVkbd-korean)
+ InstallAppDefaults(XVkbd-latin1)
+ InstallAppDefaults(XVkbd-norwegian)
++InstallAppDefaults(XVkbd-polish)
+ InstallAppDefaults(XVkbd-portuguese)
+ InstallAppDefaults(XVkbd-russian)
+ InstallAppDefaults(XVkbd-slovene)
+diff -rupN xvkbd-3.9/XVkbd-common.ad xvkbd-3.9-new/XVkbd-common.ad
+--- xvkbd-3.9/XVkbd-common.ad	2018-02-24 02:12:28.000000000 -0500
++++ xvkbd-3.9-new/XVkbd-common.ad	2018-05-27 19:58:13.385923135 -0400
+@@ -296,7 +296,7 @@ XVkbd*deadkey_panel*dead_abovedot.label:
+ XVkbd.customizations: default,belgian,danish,fitaly,\
+   french,french2,german,greek,hebrew,icelandic,italian,\
+   jisx6002/ja_JP.eucJP,jisx6004/ja_JP.eucJP,korean/ko_KR.eucKR,\
+-  norwegian,portuguese,russian/ru_RU.KOI8-R,slovene,spanish,\
++  norwegian,polish,portuguese,russian/ru_RU.KOI8-R,slovene,spanish,\
+   swedish,swissgerman,turkish,turkishF,uk,latin1,small,strip
+ 
+ XVkbd*layout_panel*default.label: Default
+@@ -314,6 +314,7 @@ XVkbd*layout_panel*jisx6002.label: Japan
+ XVkbd*layout_panel*jisx6004.label: Japanese (JIS X 6004)
+ XVkbd*layout_panel*korean.label: Korean
+ XVkbd*layout_panel*norwegian.label: Norwegian
++XVkbd*layout_panel*polish.label: Polish
+ XVkbd*layout_panel*portuguese.label: Portuguese
+ XVkbd*layout_panel*russian.label: Russian
+ XVkbd*layout_panel*slovene.label: Slovene
+diff -rupN xvkbd-3.9/XVkbd-polish.ad xvkbd-3.9-new/XVkbd-polish.ad
+--- xvkbd-3.9/XVkbd-polish.ad	1969-12-31 19:00:00.000000000 -0500
++++ xvkbd-3.9-new/XVkbd-polish.ad	2018-05-27 19:58:13.385923135 -0400
+@@ -0,0 +1,85 @@
++!! XVkbd-polish.ad  - sample app-defaults file for xvkbd
++!! by SFR
++!!
++!! Last update: 2015-11-21
++
++#include "XVkbd-common"
++
++xvkbd.title: xvkbd - Virtual Keyboard (Polish)
++
++xvkbd*Mode_switch.width: 50
++xvkbd*space.width: 110
++
++!!xvkbd*Font: -misc-fixed-bold-r-normal--0-0-75-75-c-0-iso10646-1
++
++xvkbd.NormalKeys: \
++  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 BackSpace \n\
++  Escape 1 2 3 4 5 6 7 8 9 0 - = \\ ` \n\
++  Tab q w e r t y u i o p [ ] Delete \n\
++  Control_L a s d f g h j k l ; ' Return \n\
++  Shift_L z x c v b n m , . / Multi_key Shift_R \n\
++  MainMenu Caps_Lock Alt_L Meta_L space Mode_switch Left Right Up Down Focus
++
++xvkbd.ShiftKeys: \
++  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 BackSpace \n\
++  Escape ! @ # $ % ^ & * ( ) _ + | ~ \n\
++  ISO_Left_Tab Q W E R T Y U I O P { } Delete \n\
++  Control_L A S D F G H J K L : \" Return \n\
++  Shift_L Z X C V B N M < > ? Multi_key Shift_R \n\
++  MainMenu Caps_Lock Alt_L Meta_L space Mode_switch Left Right Up Down Focus
++
++xvkbd.AltgrKeys: \
++  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 BackSpace \n\
++  Escape 1 2 3 4 5 6 7 8 9 0 - = \\ ` \n\
++  Tab q w eogonek r t y u i oacute p [ ] Delete \n\
++  Control_L aogonek sacute d f g h j k lstroke ; ' Return \n\
++  Shift zabovedot zacute cacute v b nacute m , . / Multi_key Shift_R \n\
++  MainMenu Caps_Lock Alt_L Meta_L space Mode_switch Left Right Up Down Focus
++
++xvkbd.ShiftAltgrKeys: \
++  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 BackSpace \n\
++  Escape ! @ # $ % ^ & * ( ) _ + | ~ \n\
++  ISO_Left_Tab Q W Eogonek R T Y U I Oacute P { } Delete \n\
++  Control_L Aogonek Sacute D F G H J K Lstroke : \" Return \n\
++  Shift Zabovedot Zacute Cacute V B Nacute M < > ? Multi_key Shift_R \n\
++  MainMenu Caps_Lock Alt_L Meta_L space Mode_switch Left Right Up Down Focus
++
++xvkbd.KeyLabels: \
++  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 Backspace \n\
++  Esc !\n1 @\n2 #\n3 $\n4 %\n5 ^\n6 &\n7 *\n8 (\n9 )\n0 _\n- +\n= |\n\134 ~\n` \n\
++  Tab Q W E R T Y U I O P {\n[ }\n] Delete \n\
++  Control A S D F G H J K L :\n; \"\n' Return \n\
++  Shift Z X C V B N M <\n, >\n. ?\n/ Com\npose Shift \n\
++  MainMenu Caps\nLock Alt Meta space AltGr left right up down Focus
++
++xvkbd.NormalKeyLabels: \
++  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 Backspace \n\
++  Esc 1 2 3 4 5 6 7 8 9 0 - = \\ ` \n\
++  Tab q w e r t y u i o p [ ] Del \n\
++  Ctrl a s d f g h j k l ; ' Return \n\
++  Shift z x c v b n m , . / Comp Shift \n\
++  MainMenu Caps Alt Meta space AltGr left right up down Focus
++
++xvkbd.ShiftKeyLabels: \
++  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 Backspace \n\
++  Esc ! @ # $ % ^ & * ( ) _ + | ~ \n\
++  Tab Q W E R T Y U I O P { } Del \n\
++  Ctrl A S D F G H J K L : \" Return \n\
++  Shift Z X C V B N M < > ? Comp Shift \n\
++  MainMenu Caps Alt Meta space AltGr left right up down Focus
++
++xvkbd.AltgrKeyLabels: \
++  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 Backspace \n\
++  Esc 1 2 3 4 5 6 7 8 9 0 - = \\ ` \n\
++  Tab q w e r t y u i o p [ ] Del \n\
++  Ctrl a s d f g h j k l ; ' Return \n\
++  Shift z z c v b n m , . / Comp Shift \n\
++  MainMenu Caps Alt Meta space AltGr left right up down Focus
++
++xvkbd.ShiftAltgrKeyLabels: \
++  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 Backspace \n\
++  Esc ! @ # $ % ^ & * ( ) _ + | ~ \n\
++  Tab Q W E R T Y U I O P { } Del \n\
++  Ctrl A S D F G H J K L : \" Return \n\
++  Shift Z X C V B N M < > ? Comp Shift \n\
++  MainMenu Caps Alt Meta space AltGr left right up down Focus

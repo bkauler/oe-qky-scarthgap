@@ -1,0 +1,27 @@
+---
+ resources.h |    2 +-
+ xvkbd.c     |    2 ++
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+--- a/resources.h
++++ b/resources.h
+@@ -19,7 +19,7 @@
+ # define PROGRAM_NAME "xvkbd"
+ #endif
+ 
+-struct appres_struct {
++extern struct appres_struct {
+   String description;
+   String show_manual_command;
+ 
+--- a/xvkbd.c
++++ b/xvkbd.c
+@@ -66,6 +66,8 @@
+ # define PATH_MAX 300
+ #endif
+ 
++struct appres_struct appres;
++
+ /*
+  * Default keyboard layout is hardcoded here.
+  * Layout of the main keyboard can be redefined by resources.
