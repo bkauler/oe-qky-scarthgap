@@ -1,0 +1,11 @@
+#!/bin/bash
+
+ALL1='afr amh ara asm aze_cyrl aze bel ben bod bos bre bul cat ceb ces chi_sim chi_sim_vert chi_tra chi_tra_vert chr cos cym dan_frak dan deu_frak deu div dzo ell eng enm epo equ est eus fao fas fil fin fra frk frm fry gla gle glg grc guj hat heb hin hrv hun hye iku ind isl ita_old ita jav jpn jpn_vert kan kat_old kat kaz khm kir kmr kor kor_vert lao lat lav lit ltz mal mar mkd mlt mon mri msa mya nep nld nor oci ori osd pan pol por pus que ron rus san sin slk_frak slk slv snd spa_old spa sqi srp_latn srp sun swa swe syr tam tat tel tgk tgl tha tir ton tur uig ukr urd uzb_cyrl uzb vie yid yor'
+CUT1='chi_sim dan deu eng fin fra hin hun ita jpn nld nor pol por rus slv spa tam tur ukr'
+
+for aL in ${CUT1}
+do
+ cp -a -f tessdata-XXX_4.1.0.bbXXX tessdata-${aL/_/-}_4.1.0.bb
+ sed -i -e "s%XXX%${aL}%" tessdata-${aL/_/-}_4.1.0.bb
+done
+sync
