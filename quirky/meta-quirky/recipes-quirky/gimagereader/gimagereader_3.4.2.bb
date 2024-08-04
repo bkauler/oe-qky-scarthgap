@@ -30,15 +30,8 @@ do_configure:prepend() {
  #hmm, more hacks... oe has libxml++-5.0
  sed -i -e 's%libxml\+\+-3\.0%libxml++-5.0%' ${S}/CMakeLists.txt
  ln -s libxml++-5.0.pc ${WORKDIR}/recipe-sysroot/usr/lib/pkgconfig/libxml++-3.0.pc
- #it looks for libzip...
- sed -i -e 's%libzip%zlib%' ${S}/CMakeLists.txt
  #aargh wants gdkwayland.h... fix stupid code...
  sed -i -e 's%G_OS_UNIX%G_OS_UNIXW%' ${S}/gtk/src/SourceManager.cc
-}
-
-do_compile:prepend() {
- #weird, -lzip is missing...
- sed -i -e 's% \-lz % -lz -lzip %' ${B}/build.ninja
 }
 
 WARN_QA:remove = "buildpaths"
