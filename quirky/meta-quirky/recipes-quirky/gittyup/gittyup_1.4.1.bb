@@ -1,16 +1,9 @@
 # Recipe created by recipetool
 # recipetool create -o gittyup_1.4.1.bb https://distro.ibiblio.org/easyos/source/alphabetical/g/gittyup-1.4.1.tar.gz
 
-LICENSE = "Apache-2.0 & BSD-3-Clause & BSL-1.0 & GPL-2.0-only & LGPL-2.1-only & MIT"
+LICENSE = "MIT & GPL-2.0-only"
 LIC_FILES_CHKSUM = "file://LICENSE.md;md5=3e0b480588945a0173fd585217b49ef4 \
-                    file://LICENSE.md.in;md5=8c40b023d13042ac0965a2404c300736 \
-                    file://dep/cmark/cmark/COPYING;md5=81f9cae6293cc0345a9144b78152ab62 \
-                    file://dep/openssl/openssl/LICENSE;md5=d343e62fc9c833710bbbed25f27364c8 \
-                    file://dep/openssl/openssl/external/perl/Text-Template-1.46/COPYING;md5=361b6b837cad26c6900a926b62aada5f \
-                    file://dep/openssl/openssl/util/perl/OpenSSL/copyright.pm;md5=dd423710d2592f2c789ab50002e9dd06 \
-                    file://dep/scintilla/lexilla/License.txt;md5=778e351f84dbd507f4dd33fb535690e7 \
-                    file://dep/scintilla/lexilla/test/unit/LICENSE_1_0.txt;md5=e4224ccaecb14d942c71d31bef20d78c \
-                    file://dep/scintilla/scintillua/LICENSE;md5=4a4be7fec6c015e1ef0ca43ea9fb1ffe"
+                    file://dep/libgit2/libgit2/COPYING;md5=5b002a195fb7ea2d8d583f07eaff3a8e"
 
 SRC_URI = "https://distro.ibiblio.org/easyos/source/alphabetical/g/gittyup-${PV}.tar.gz"
 
