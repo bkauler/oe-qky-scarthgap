@@ -5,3 +5,6 @@
 # meta-quirky/recipes-quirky/zarfy/zarfy_0.1.0.bb
 PACKAGES:remove = "gdk-pixbuf-xlib"
 
+#20240818 gdk-pixbuf 2.42.11 has dropped xpm support by default.
+#so annoying!!!!
+EXTRA_OEMESON:append = " -Dothers=enabled"
