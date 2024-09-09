@@ -1,0 +1,18 @@
+Subject: Demote unsupported platform error to a warning
+Author: Sune Vuorela <sune@vuorela.dk>
+Forwarded: not-needed
+Last-Update: 2022-10-05
+
+diff --git a/kde-modules/KDEMetaInfoPlatformCheck.cmake b/kde-modules/
+KDEMetaInfoPlatformCheck.cmake
+index c02cfff0..49af1aab 100644
+--- a/kde-modules/KDEMetaInfoPlatformCheck.cmake
++++ b/kde-modules/KDEMetaInfoPlatformCheck.cmake
+@@ -74,6 +74,6 @@ if (NOT "${KF_IGNORE_PLATFORM_CHECK}")
+     endforeach()
+ 
+     if (NOT _MetainfoFoundSupportedPlatform)
+-        message(FATAL_ERROR "Your current platform '${CMAKE_SYSTEM_NAME}' is not supported. The list of supported platorms is '${_MetainfoSupportedPlatforms}'.If you think this is a mistake or you are working on enabling the platform please build with the KF_IGNORE_PLATFORM_CHECK variable set to true")
++        message(WARNING "Your current platform '${CMAKE_SYSTEM_NAME}' is not supported. The list of supported platorms is '${_MetainfoSupportedPlatforms}'.If you think this is a mistake or you are working on enabling the platform please build with the KF_IGNORE_PLATFORM_CHECK variable set to true")
+     endif()
+ endif()

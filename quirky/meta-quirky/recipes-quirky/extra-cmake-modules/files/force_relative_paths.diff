@@ -1,0 +1,18 @@
+From: Debian/Kubuntu Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>
+Date: Sun, 12 Jun 2016 18:37:12 +0200
+Subject: force_relative_paths
+
+---
+ tests/KDEInstallDirsTest/relative_or_absolute/CMakeLists.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+--- a/tests/KDEInstallDirsTest/relative_or_absolute/CMakeLists.txt
++++ b/tests/KDEInstallDirsTest/relative_or_absolute/CMakeLists.txt
+@@ -1,6 +1,7 @@
+ cmake_minimum_required(VERSION 3.5)
+ project(KDEInstallDirs.relative_or_absolute)
+ 
++set(KDE_INSTALL_USE_QT_SYS_PATHS FALSE)
+ set(ECM_KDE_MODULE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../../../kde-modules)
+ set(ECM_MODULE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../../../modules)
+ set(CMAKE_MODULE_PATH "${ECM_KDE_MODULE_DIR}")
