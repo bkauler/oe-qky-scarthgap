@@ -8,6 +8,7 @@
 # 20220829 debdb2pupdb install to /usr/local/debget
 # 20220903 bacon 4.5.0.2 20220906 back to bacon 3.9.3
 # recipetool create -o pup-tools_20221101.bb https://distro.ibiblio.org/easyos/source/alphabetical/p/pup-tools-20221101.tar.gz
+# 20240918 gone back to bacon debdb2pupdb in woofq.
 
 ## 20220906 PR_NUM is defined in local.conf, currently r9
 #PR = "r${@int(PR_NUM) + 1}"
@@ -117,7 +118,7 @@ do_install () {
  install -d ${D}${sbindir}
  install -d ${D}/usr/local/petget
  install -d ${D}/usr/local/pup_event
- install -d ${D}/usr/local/debget
+ #install -d ${D}/usr/local/debget
 
  install -m755 gcc/vercmp ${D}${bindir}
  install -m755 gcc/truncate ${D}${bindir}
@@ -132,11 +133,11 @@ do_install () {
 
  install -m755 bacon/popup ${D}${sbindir}
  install -m755 bacon/welcome1stboot ${D}${sbindir}
- #install -m755 bacon/debdb2pupdb ${D}/usr/local/petget
+ install -m755 bacon/debdb2pupdb ${D}/usr/local/petget
  install -m755 bacon/find_cat ${D}/usr/local/petget
  install -m755 bacon/pup_event_ipc ${D}/usr/local/pup_event
  
- install -m755 nim/debdb2pupdb ${D}/usr/local/debget 
+ install -m755 nim/debdb2pupdb ${D}/usr/local/petget/debdb2pupdb-nim
 }
 
 FILES:${PN} += "/usr/local/petget /usr/local/pup_event /usr/local/debget"
