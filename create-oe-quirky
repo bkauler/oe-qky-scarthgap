@@ -66,6 +66,9 @@ sed -i -e 's%{OE_QMAKE_CXXFLAGS}%{OE_QMAKE_CXXFLAGS} -fpermissive%' ${BUILDSPATH
 sed -i -e 's%{CXXFLAGS}%{CXXFLAGS} -fpermissive%' ${BUILDSPATH}/${QFOLDER}/meta-qt5/classes/qmake5_base.bbclass
 sync
 
+#20240922
+tar -xf downloads-oe/meta-kf5.tar.gz --directory=${BUILDSPATH}/${QFOLDER}
+
 #tar -xf downloads-oe/meta-conan.tar.gz --directory=${BUILDSPATH}/${QFOLDER}
 tar -xf downloads-oe/meta-clang.tar.gz --directory=${BUILDSPATH}/${QFOLDER}
 tar -xf downloads-oe/meta-chromium.tar.gz --directory=${BUILDSPATH}/${QFOLDER} --strip=1
@@ -84,7 +87,7 @@ sync
 
 #for musl build...
 cp -a ${BUILDSPATH}/${QFOLDER}/meta-quirky ${BUILDSPATH}/${QFOLDER}/meta-quirky-cut
-for aCUT in recipes-browser/chromium recipes-browser/firefox recipes-devtools/archive-zip recipes-devtools/clang recipes-gnome/evince recipes-gnome/gthumb recipes-gnome/gtk4 recipes-gnome/nautilus recipes-gnome/tracker recipes-graphics/harfbuzz recipes-graphics/mesa recipes-graphics/scribus recipes-libreoffice/libreoffice recipes-multimedia/sox recipes-multimedia/vlc recipes-multimedia/x265 recipes-qt/qt5 recipes-quirky/freetype-static recipes-quirky/gui-engine recipes-quirky/libsdl-fb recipes-quirky/obs recipes-quirky/vym recipes-support/mlt recipes-support/redland recipes-quirky/keepassxc recipes-multimedia/shotcut recipes-quirky/symphytum recipes-quirky/aqemu recipes-quirky/qtemu recipes-quirky/qlipper
+for aCUT in recipes-browser/chromium recipes-browser/firefox recipes-devtools/archive-zip recipes-devtools/clang recipes-gnome/evince recipes-gnome/gthumb recipes-gnome/gtk4 recipes-gnome/nautilus recipes-gnome/tracker recipes-graphics/harfbuzz recipes-graphics/mesa recipes-graphics/scribus recipes-libreoffice/libreoffice recipes-multimedia/sox recipes-multimedia/vlc recipes-multimedia/x265 recipes-qt/qt5 recipes-quirky/freetype-static recipes-quirky/gui-engine recipes-quirky/libsdl-fb recipes-quirky/obs recipes-quirky/vym recipes-support/mlt recipes-support/redland recipes-quirky/keepassxc recipes-multimedia/shotcut recipes-quirky/symphytum recipes-quirky/aqemu recipes-quirky/qtemu recipes-quirky/qlipper recipes-quirky/gittyup recipes-xfce/thunar
 do
  if [ -d "${BUILDSPATH}/${QFOLDER}/meta-quirky-cut/${aCUT}" ];then
   rm -rf ${BUILDSPATH}/${QFOLDER}/meta-quirky-cut/${aCUT}
