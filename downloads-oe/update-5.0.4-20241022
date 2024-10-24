@@ -1,0 +1,94 @@
+#!/bin/sh
+
+if [ "$(whoami)" != "root" ];then
+ echo "Error, must run this script as a user \"root\"."
+ exit
+fi
+
+rm -rf meta-yocto 2>/dev/null
+rm -f meta-yocto.tar.gz
+git clone -b scarthgap git://git.yoctoproject.org/meta-yocto --depth 1
+rm -rf meta-yocto/.git
+dir2tgz meta-yocto
+sync
+rm -rf meta-yocto
+
+rm -rf openembedded-core 2>/dev/null
+rm -f openembedded-core.tar.gz
+git clone -b scarthgap git://git.openembedded.org/openembedded-core openembedded-core --depth 1
+rm -rf openembedded-core/.git
+dir2tgz openembedded-core
+sync
+rm -rf openembedded-core
+
+rm -rf meta-openembedded 2>/dev/null
+rm -f meta-openembedded.tar.gz
+git clone -b scarthgap git://git.openembedded.org/meta-openembedded meta-openembedded --depth 1
+rm -rf meta-openembedded/.git
+dir2tgz meta-openembedded
+sync
+rm -rf meta-openembedded
+
+#ref: https://git.openembedded.org/bitbake
+rm -rf bitbake 2>/dev/null
+rm -f bitbake.tar.gz
+git clone -b '2.8.4' git://git.openembedded.org/bitbake bitbake --depth 1
+rm -rf bitbake/.git
+dir2tgz bitbake
+sync
+rm -rf bitbake
+sync
+
+#20241022 see below
+#rm -rf meta-chromium 2>/dev/null
+#rm -f meta-chromium.tar.gz 2>/dev/null
+#git clone -b master https://github.com/OSSystems/meta-browser meta-chromium --depth 1
+#rm -rf meta-chromium/.git
+#rm -rf meta-chromium/meta-firefox
+#dir2tgz meta-chromium
+#sync
+#rm -rf meta-chromium
+
+#20241022 for now, get it from here...
+rm -rf meta-chromium 2>/dev/null
+rm -f meta-chromium.tar.gz 2>/dev/null
+git clone -b '129.0.6668.100' https://github.com/MaxIhlenfeldt/meta-browser meta-chromium --depth 1
+rm -rf meta-chromium/.git
+rm -rf meta-chromium/meta-firefox
+dir2tgz meta-chromium
+sync
+rm -rf meta-chromium
+
+rm -rf meta-qt5 2>/dev/null
+rm -f meta-qt5.tar.gz
+git clone -b scarthgap https://github.com/meta-qt5/meta-qt5.git meta-qt5 --depth 1
+rm -rf meta-qt5/.git
+dir2tgz meta-qt5
+sync
+rm -rf meta-qt5
+
+rm -rf meta-qt5-extra 2>/dev/null
+rm -f meta-qt5-extra.tar.gz
+git clone -b master https://github.com/schnitzeltony/meta-qt5-extra.git meta-qt5-extra --depth 1
+rm -rf meta-qt5-extra/.git
+dir2tgz meta-qt5-extra
+sync
+rm -rf meta-qt5-extra
+
+rm -rf meta-clang 2>/dev/null
+rm -f meta-clang.tar.gz
+git clone -b scarthgap https://github.com/kraj/meta-clang.git meta-clang --depth 1
+rm -rf meta-clang/.git
+dir2tgz meta-clang
+sync
+rm -rf meta-clang
+
+rm -rf meta-office 2>/dev/null
+rm -f meta-office.tar.gz
+git clone -b master https://github.com/schnitzeltony/meta-office.git meta-office --depth 1
+rm -rf meta-office/.git
+dir2tgz meta-office
+sync
+rm -rf meta-office
+
+###end###
