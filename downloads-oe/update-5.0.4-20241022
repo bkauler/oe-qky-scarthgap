@@ -91,4 +91,11 @@ dir2tgz meta-office
 sync
 rm -rf meta-office
 
+rm -f meta-java.tar.gz 2>/dev/null
+git clone -b scarthgap https://git.yoctoproject.org/git/meta-java --depth 1
+rm -rf meta-java/.git
+dir2tgz meta-java
+sync
+rm -rf meta-java
+
 ###end###

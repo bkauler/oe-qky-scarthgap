@@ -81,6 +81,10 @@ tar -xf downloads-oe/meta-chromium.tar.gz --directory=${BUILDSPATH}/${QFOLDER} -
 # sed -i -e 's%mickledore%mickledore scarthgap%' ${BUILDSPATH}/${QFOLDER}/meta-rust/conf/layer.conf
 #fi
 
+#20241029
+tar -xf downloads-oe/meta-java.tar.gz --directory=${BUILDSPATH}/${QFOLDER}
+sync
+
 #customization for quirky/easyos...
 cp -a -f --remove-destination quirky/* ${BUILDSPATH}/${QFOLDER}/
 sync
