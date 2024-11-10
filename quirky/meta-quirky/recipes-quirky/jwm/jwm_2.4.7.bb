@@ -1,12 +1,12 @@
 # Recipe created by recipetool
-# recipetool create -o jwm-2.4.3.99.bb https://distro.ibiblio.org/easyos/source/alphabetical/j/jwm-2.4.3.99.tar.gz
+# recipetool create -o jwm-2.4.7.bb https://distro.ibiblio.org/easyos/source/alphabetical/j/jwm-2.4.7.tar.gz
 
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=c2938cf0f6887d0bca0cea7cac3e097f"
 
-SRC_URI = "https://distro.ibiblio.org/easyos/source/alphabetical/j/jwm-2.4.3.99.tar.gz"
+SRC_URI = "https://distro.ibiblio.org/easyos/source/alphabetical/j/jwm-2.4.7.tar.gz"
 
-SRC_URI[sha256sum] = "e2817dcd218b9209ec75771748df67c47a80617300fa51f70f5e70586c133441"
+SRC_URI[sha256sum] = "4c5605d33727da17ff4d207dc8a3c76a954c4e156c09e51348acc564717b3992"
 
 DEPENDS = "libjpeg-turbo libxft libx11 libxpm cairo libpng12 libxrender libxext \
            librsvg libxmu libxinerama intltool-native pango"
@@ -23,6 +23,6 @@ do_configure:prepend() {
  sed -i '/^AM_INIT_AUTOMAKE/d' ${S}/configure.ac
 }
 
-HOMEPAGE = "http://www.joewing.net/programs/jwm"
+HOMEPAGE = "https://joewing.net/projects/jwm/"
 SUMMARY = "Joes Window Manager"
 
