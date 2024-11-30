@@ -1,0 +1,5 @@
+oe scarthgap r3 has cups 2.4.10, which is broken:
+https://bkhome.org/news/202411/easy-scarthgap-print-setup-broken.html
+
+have rolled back to 2.4.7, from oe scarthgap r1
+this was in easyos 6.0.4
