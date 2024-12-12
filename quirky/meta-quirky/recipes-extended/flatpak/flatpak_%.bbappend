@@ -36,9 +36,5 @@ EXTRA_OEMESON:append = " -Dsystem_helper=disabled \
      -Dsystem_install_dir=/mnt/wkg/flatpak \
      -Drun_media_dir=/mnt"
 
-#NOTICE#
-#oh crap, cannot remove "useradd" from inherit in original .bb
-#have to copy the whole lot here and edit flatpak_1.15.6.bb
-
 SUMMARY = "Linux application sandboxing and distribution framework"
 HOMEPAGE = "https://flatpak.org/"

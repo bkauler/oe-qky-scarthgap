@@ -1,0 +1,6 @@
+ref:
+https://bkhome.org/news/202412/kodi-flatpak-does-not-work.html
+
+Scarthgap has flatpak 1.15.6, see if 1.15.8 will fix kodi.
+note, meta-oe master has 1.15.10 but couldn't compile.
+
