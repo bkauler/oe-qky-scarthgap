@@ -1,0 +1,22 @@
+#!/bin/sh
+
+#FAIL...
+##20241127 for now, get it from here...
+#rm -rf meta-chromium 2>/dev/null
+#rm -f meta-chromium.tar.gz 2>/dev/null
+#git clone -b '131.0.6778.85' https://github.com/MaxIhlenfeldt/meta-browser meta-chromium --depth 1
+#rm -rf meta-chromium/.git
+#rm -rf meta-chromium/meta-firefox
+#dir2tgz meta-chromium
+#sync
+#rm -rf meta-chromium
+
+#202411215 for now, get it from here...
+rm -rf meta-chromium 2>/dev/null
+rm -f meta-chromium.tar.gz 2>/dev/null
+git clone -b '131.0.6778.85' https://github.com/MaxIhlenfeldt/meta-browser meta-chromium --depth 1
+rm -rf meta-chromium/.git
+rm -rf meta-chromium/meta-firefox
+dir2tgz meta-chromium
+sync
+rm -rf meta-chromium
