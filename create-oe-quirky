@@ -1,6 +1,7 @@
 #!/bin/sh
 #20231227 script created.
 #20240108 core2 -> nocona
+#20250124 rust mixins
 
 #***SET THESE***
 BUILDSPATH='/mnt/build/builds/oe/scarthgap'
@@ -67,7 +68,7 @@ sed -i -e 's%{CXXFLAGS}%{CXXFLAGS} -fpermissive%' ${BUILDSPATH}/${QFOLDER}/meta-
 sync
 
 #20240922
-tar -xf downloads-oe/meta-kf5.tar.gz --directory=${BUILDSPATH}/${QFOLDER}
+#tar -xf downloads-oe/meta-kf5.tar.gz --directory=${BUILDSPATH}/${QFOLDER}
 
 #tar -xf downloads-oe/meta-conan.tar.gz --directory=${BUILDSPATH}/${QFOLDER}
 tar -xf downloads-oe/meta-clang.tar.gz --directory=${BUILDSPATH}/${QFOLDER}
@@ -80,6 +81,11 @@ tar -xf downloads-oe/meta-chromium.tar.gz --directory=${BUILDSPATH}/${QFOLDER} -
 #if [ $? -ne 0 ];then
 # sed -i -e 's%mickledore%mickledore scarthgap%' ${BUILDSPATH}/${QFOLDER}/meta-rust/conf/layer.conf
 #fi
+
+#20250124 rust mixins
+tar -xf downloads-oe/meta-lts-mixins.tar.gz --directory=${BUILDSPATH}/${QFOLDER}
+sed -i -e 's%lts-rust-mixin%scarthgap-rust-mixin%' ${BUILDSPATH}/${QFOLDER}/meta-lts-mixins/conf/layer.conf
+sync
 
 #20241029
 tar -xf downloads-oe/meta-java.tar.gz --directory=${BUILDSPATH}/${QFOLDER}
