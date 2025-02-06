@@ -33,9 +33,8 @@ SRC_URI[sha256sum] = "8a917bdefffd39980e12206184d51ea6a94b08ffbc2203dbf19730ccab
 
 S = "${WORKDIR}/${BPN}-studio-${PV}"
 
-#20250203 try add: libglu  try rem: virtual/libgl
 DEPENDS = "fontconfig pulseaudio qtx11extras zlib libx11 qtsvg qtbase libxcb \
-           swig-native freetype dbus alsa-lib \
+           virtual/libgl swig-native freetype dbus alsa-lib \
            imagemagick jack libsndfile1 eudev jansson x264 x265 mbedtls \
            luajit v4l-utils speex speexdsp curl ffmpeg libxcb sysfsutils \
            mesa glib-2.0 glib-2.0-native libxcomposite libxinerama pciutils \
@@ -46,7 +45,7 @@ DEPENDS = "fontconfig pulseaudio qtx11extras zlib libx11 qtsvg qtbase libxcb \
            xvidcore wavpack libvorbis libvpx opencore-amr lame lcms xz libwebp \
            libxfixes libxext zlib \
            freetype libxcb swig-native alsa-lib vlc nlohmann-json websocketpp asio \
-           srt librist libglu"
+           srt librist"
 
 inherit cmake pkgconfig cmake_qt5 python3native python3-dir
 

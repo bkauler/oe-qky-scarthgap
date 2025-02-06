@@ -12,9 +12,7 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=b234ee4d69f5fce4486a80fdaf4a4263 \
                     file://deps/w32-pthreads/COPYING;md5=51b90c76bb95fd648da6d973aac3ac04 \
                     file://deps/w32-pthreads/COPYING.LIB;md5=1f9afd9ce31d5df8ee588082031db79e"
 
-#20250203 patch for ffmpeg6
-SRC_URI = "https://github.com/obsproject/obs-studio/archive/refs/tags/${PV}.tar.gz \
-           file://obs27p2p4-ffmpeg6-fix.patch"
+SRC_URI = "https://github.com/obsproject/obs-studio/archive/refs/tags/${PV}.tar.gz"
 
 SRC_URI[md5sum] = "a79f8bf28ab9995e333fc1ac0bcfa708"
 SRC_URI[sha256sum] = "f7297a7421cbfe2bb4bc6bf83659bb873bc8f1186667c35c34bdbaac3f0fd5fd"

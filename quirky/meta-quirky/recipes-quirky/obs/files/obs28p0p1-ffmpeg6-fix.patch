@@ -1,0 +1,71 @@
+diff -Naur obs-studio-28.0.1ORIG/deps/media-playback/media-playback/decode.c obs-studio-28.0.1/deps/media-playback/media-playback/decode.c
+--- obs-studio-28.0.1ORIG/deps/media-playback/media-playback/decode.c	2022-09-03 11:09:59.000000000 +0800
++++ obs-studio-28.0.1/deps/media-playback/media-playback/decode.c	2025-02-03 20:56:42.676790772 +0800
+@@ -224,8 +224,10 @@
+ 		d->in_frame = d->sw_frame;
+ 	}
+ 
+-	if (d->codec->capabilities & CODEC_CAP_TRUNC)
++	#if LIBAVCODEC_VERSION_MAJOR < 60
++	 if (d->codec->capabilities & CODEC_CAP_TRUNC)
+ 		d->decoder->flags |= CODEC_FLAG_TRUNC;
++	#endif
+ 
+ 	d->orig_pkt = av_packet_alloc();
+ 	d->pkt = av_packet_alloc();
+diff -Naur obs-studio-28.0.1ORIG/deps/media-playback/media-playback/decode.h obs-studio-28.0.1/deps/media-playback/media-playback/decode.h
+--- obs-studio-28.0.1ORIG/deps/media-playback/media-playback/decode.h	2022-09-03 11:09:59.000000000 +0800
++++ obs-studio-28.0.1/deps/media-playback/media-playback/decode.h	2025-02-03 20:58:19.640126915 +0800
+@@ -37,8 +37,10 @@
+ #endif
+ 
+ #if LIBAVCODEC_VERSION_MAJOR >= 58
++#if LIBAVCODEC_VERSION_MAJOR < 60
+ #define CODEC_CAP_TRUNC AV_CODEC_CAP_TRUNCATED
+ #define CODEC_FLAG_TRUNC AV_CODEC_FLAG_TRUNCATED
++#endif
+ #else
+ #define CODEC_CAP_TRUNC CODEC_CAP_TRUNCATED
+ #define CODEC_FLAG_TRUNC CODEC_FLAG_TRUNCATED
+diff -Naur obs-studio-28.0.1ORIG/libobs/obs-ffmpeg-compat.h obs-studio-28.0.1/libobs/obs-ffmpeg-compat.h
+--- obs-studio-28.0.1ORIG/libobs/obs-ffmpeg-compat.h	2022-09-03 11:09:59.000000000 +0800
++++ obs-studio-28.0.1/libobs/obs-ffmpeg-compat.h	2025-02-03 20:59:56.440129743 +0800
+@@ -23,8 +23,10 @@
+ #endif
+ 
+ #if LIBAVCODEC_VERSION_MAJOR >= 58
++#if LIBAVCODEC_VERSION_MAJOR < 60
+ #define CODEC_CAP_TRUNC AV_CODEC_CAP_TRUNCATED
+ #define CODEC_FLAG_TRUNC AV_CODEC_FLAG_TRUNCATED
++#endif
+ #define INPUT_BUFFER_PADDING_SIZE AV_INPUT_BUFFER_PADDING_SIZE
+ #else
+ #define CODEC_CAP_TRUNC CODEC_CAP_TRUNCATED
+diff -Naur obs-studio-28.0.1ORIG/plugins/obs-ffmpeg/obs-ffmpeg-compat.h obs-studio-28.0.1/plugins/obs-ffmpeg/obs-ffmpeg-compat.h
+--- obs-studio-28.0.1ORIG/plugins/obs-ffmpeg/obs-ffmpeg-compat.h	2022-09-03 11:09:59.000000000 +0800
++++ obs-studio-28.0.1/plugins/obs-ffmpeg/obs-ffmpeg-compat.h	2025-02-03 21:01:04.976798378 +0800
+@@ -27,8 +27,10 @@
+ #endif
+ 
+ #if LIBAVCODEC_VERSION_MAJOR >= 58
++#if LIBAVCODEC_VERSION_MAJOR < 60
+ #define CODEC_CAP_TRUNC AV_CODEC_CAP_TRUNCATED
+ #define CODEC_FLAG_TRUNC AV_CODEC_FLAG_TRUNCATED
++#endif
+ #define CODEC_FLAG_GLOBAL_H AV_CODEC_FLAG_GLOBAL_HEADER
+ #else
+ #define CODEC_CAP_TRUNC CODEC_CAP_TRUNCATED
+diff -Naur obs-studio-28.0.1ORIG/plugins/win-dshow/ffmpeg-decode.c obs-studio-28.0.1/plugins/win-dshow/ffmpeg-decode.c
+--- obs-studio-28.0.1ORIG/plugins/win-dshow/ffmpeg-decode.c	2022-09-03 11:09:59.000000000 +0800
++++ obs-studio-28.0.1/plugins/win-dshow/ffmpeg-decode.c	2025-02-03 21:02:40.700134485 +0800
+@@ -105,8 +105,10 @@
+ 		return ret;
+ 	}
+ 
++	#if LIBAVCODEC_VERSION_MAJOR < 60
+ 	if (decode->codec->capabilities & CODEC_CAP_TRUNC)
+ 		decode->decoder->flags |= CODEC_FLAG_TRUNC;
++	#endif
+ 
+ 	return 0;
+ }
