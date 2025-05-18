@@ -10,6 +10,7 @@
 # recipetool create -o pup-tools_20221101.bb https://distro.ibiblio.org/easyos/source/alphabetical/p/pup-tools-20221101.tar.gz
 # 20240918 gone back to bacon debdb2pupdb in woofq.
 # 20250115 woofq is using debdb2pupdb-nim, improve description filter.
+# 20250420 remove truncate, use busybox applet.
 
 ## 20220906 PR_NUM is defined in local.conf, currently r9
 #PR = "r${@int(PR_NUM) + 1}"
@@ -102,8 +103,9 @@ do_compile () {
  #20211013 now have getpixelcolor.c ...
  #20220807 now have debdb2pupdb.c, find_cat.c ...
  #20220816 staying with bacon debdb2pupdb.bac and find_cat.bac
+ #20250420 rem truncate
  cd gcc
- for aFILE in bitflip printcols truncate vercmp getlocalip pup_event_frontend_d
+ for aFILE in bitflip printcols vercmp getlocalip pup_event_frontend_d
  do
   ${CC} -o ${aFILE} ${aFILE}.c ${CFLAGS} ${LDFLAGS}
  done
@@ -120,7 +122,7 @@ do_install () {
  #install -d ${D}/usr/local/debget
 
  install -m755 gcc/vercmp ${D}${bindir}
- install -m755 gcc/truncate ${D}${bindir}
+ #install -m755 gcc/truncate ${D}${bindir}
  install -m755 gcc/bitflip ${D}${sbindir}
  install -m755 gcc/getcurpos ${D}${sbindir}
  install -m755 gcc/getpixelcolor ${D}${sbindir}

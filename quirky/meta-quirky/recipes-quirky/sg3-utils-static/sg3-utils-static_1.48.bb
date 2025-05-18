@@ -23,7 +23,7 @@ RDEPENDS:${PN} += "bash"
 
 EXTRA_OECONF = "--disable-shared"
 
-do_compile_append() {
+do_compile:append() {
  cd src
  ${CC} ${LDFLAGS} -static -O2 -o sg_vpd_static sg_vpd.o sg_vpd_vendor.o sg_vpd_common.o ../lib/.libs/libsgutils2.a
  cd ..
